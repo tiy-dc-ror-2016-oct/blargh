@@ -1,5 +1,7 @@
 # README
 
+[![Build Status](https://travis-ci.org/tiy-dc-ror-2016-oct/blargh.svg?branch=master)](https://travis-ci.org/tiy-dc-ror-2016-oct/blargh)
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
