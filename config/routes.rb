@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  root 'welcome#index'
+
   # get 'micro_posts' => "micro_posts#index"
   resources :micro_posts, except: [:show] do
     member do

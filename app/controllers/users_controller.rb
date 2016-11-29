@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     session["message"] = "you signed up!"
     if @user.save
+      session["current_user_id"] = @user.id
       redirect_to micro_posts_path
     else
       render :new

@@ -1,4 +1,12 @@
 class MicroPostsController < ApplicationController
+  before_action :authorized!, only: :new
+
+  def authorized!
+    if !current_user
+      redirect_to "/"
+    end
+  end
+
   def index
     @micro_posts = MicroPost.all
     render :index
