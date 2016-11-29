@@ -37,15 +37,11 @@ class MicroPostsController < ApplicationController
     redirect_to micro_posts_path
   end
 
-
-
-
   def download
     @micro_post = MicroPost.find(params["id"])
 
     render json: @micro_post
   end
-
 
   def micro_post_params
     params.require(:micro_post).permit(:title, :content, :user_id)
