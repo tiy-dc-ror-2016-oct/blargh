@@ -1,6 +1,8 @@
 <h1>Welcome to my Blargh</h1>
 
-<%= link_to "New Blargh", new_micro_post_path %>
+<% if can? :create, MicroPost %>
+  <%= link_to "New Blargh", new_micro_post_path %>
+<% end %>
 
 <% @micro_posts.each do |micro_post| %>
 <div class="row micro_posts">
@@ -11,8 +13,12 @@
     </h2>
   </div>
   <div class="col-md-4">
-    <%= link_to "Edit Post", edit_micro_post_path(micro_post.id), class: 'btn btn-sm btn-default' %>
-    <%= link_to "Delete Post", micro_post_path(micro_post.id), method: :delete, class: 'btn btn-sm btn-default' %>
+    <% if can? :update, micro_post %>
+      <%= link_to "Edit Post", edit_micro_post_path(micro_post.id), class: 'btn btn-sm btn-default' %>
+    <% end %>
+    <% if can? :delete, micro_post %>
+      <%= link_to "Delete Post", micro_post_path(micro_post.id), method: :delete, class: 'btn btn-sm btn-default' %>
+    <% end %>
   </div>
 </div>
 

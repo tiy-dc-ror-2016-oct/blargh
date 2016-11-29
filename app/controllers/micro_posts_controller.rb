@@ -1,14 +1,9 @@
 class MicroPostsController < ApplicationController
   before_action :authenticated!, only: :new
-  before_action :authorized!, only: :new
+  load_and_authorize_resource
 
   def authenticated!
     redirect_to "/" unless current_user
-  end
-
-  def authorized!
-    binding.pry
-    redirect_to "/" unless current_user.author?
   end
 
   def index
@@ -18,13 +13,14 @@ class MicroPostsController < ApplicationController
 
   def new
     @micro_post = MicroPost.new(user_id: current_user.id)
+    # authorize! :create, @micro_post
   end
 
   def create
     @micro_post = MicroPost.new(micro_post_params)
 
     if @micro_post.save
-      redirect_to "/micro_posts"
+      redirect_to "/micro_posts", flash: { warning: "Micro Post created!"}
     else
       render :new
     end
