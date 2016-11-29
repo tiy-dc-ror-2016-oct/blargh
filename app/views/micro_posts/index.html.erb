@@ -1,32 +1,8 @@
 <h1>Welcome to my Blargh</h1>
 
-<% if can? :create, MicroPost %>
-  <%= link_to "New Blargh", new_micro_post_path %>
-<% end %>
+<%= link_to "New Blargh", new_micro_post_path %>
 
-<% @micro_posts.each do |micro_post| %>
-<div class="row micro_posts">
-  <div class="col-md-8">
-    <h2>
-      <%= micro_post.title %>
-      <small><%= micro_post.user.full_name %></small>
-    </h2>
-  </div>
-  <div class="col-md-4">
-    <% if can? :update, micro_post %>
-      <%= link_to "Edit Post", edit_micro_post_path(micro_post.id), class: 'btn btn-sm btn-default' %>
-    <% end %>
-    <% if can? :delete, micro_post %>
-      <%= link_to "Delete Post", micro_post_path(micro_post.id), method: :delete, class: 'btn btn-sm btn-default' %>
-    <% end %>
-  </div>
-</div>
-
-  <p>
-    <%= micro_post.content %>
-  </p>
-<% end %>
-
+<%= render @micro_posts %>
 
 <pre>
   <code>
