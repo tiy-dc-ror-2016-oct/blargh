@@ -3,16 +3,22 @@
 <%= link_to "New Blargh", new_micro_post_path %>
 
 <% @micro_posts.each do |micro_post| %>
-    <h4>
-      <%= micro_post.id %>:
+<div class="row micro_posts">
+  <div class="col-md-8">
+    <h2>
       <%= micro_post.title %>
       <small><%= micro_post.user.full_name %></small>
-      <%= link_to "Edit Post", edit_micro_post_path(micro_post.id) %>
-      <%= link_to "Delete Post", micro_post_path(micro_post.id), method: :delete %>
-    </h4>
-    <p>
-      <%= micro_post.content %>
-    </p>
+    </h2>
+  </div>
+  <div class="col-md-4">
+    <%= link_to "Edit Post", edit_micro_post_path(micro_post.id), class: 'btn btn-sm btn-default' %>
+    <%= link_to "Delete Post", micro_post_path(micro_post.id), method: :delete, class: 'btn btn-sm btn-default' %>
+  </div>
+</div>
+
+  <p>
+    <%= micro_post.content %>
+  </p>
 <% end %>
 
 

@@ -6,3 +6,19 @@
     color: white;
     padding: 2px;
 }
+
+.micro_posts{
+  a.btn.btn-sm.btn-default {
+      margin-top: 23px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .micro_posts{
+    a.btn.btn-sm.btn-default {
+        margin-top: 5px;
+        width: 100%;
+    }
+  }
+}

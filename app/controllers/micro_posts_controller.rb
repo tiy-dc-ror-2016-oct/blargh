@@ -1,10 +1,14 @@
 class MicroPostsController < ApplicationController
+  before_action :authenticated!, only: :new
   before_action :authorized!, only: :new
 
+  def authenticated!
+    redirect_to "/" unless current_user
+  end
+
   def authorized!
-    if !current_user
-      redirect_to "/"
-    end
+    binding.pry
+    redirect_to "/" unless current_user.author?
   end
 
   def index
